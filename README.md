@@ -1,6 +1,6 @@
 ## INGENIERÍA DEL CONOCIMIENTO
 
-## Gonzalo Pajares
+## github pages link ...
 
 # Práctica 2: Árbol de decisión (ID3) (versión reducida)
 
