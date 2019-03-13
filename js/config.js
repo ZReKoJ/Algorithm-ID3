@@ -2,5 +2,6 @@
 
 var CONFIG = {
     DELIMITER: ",",
-    DECISION: ""
+    DECISION: "",
+    SHOW_MESSAGES_INTERVAL: 30000
 }

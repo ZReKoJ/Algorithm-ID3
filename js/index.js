@@ -2,8 +2,23 @@
 
 var notifier = new Notifier();
 var data = {
-    header: [],
-    body: []
+    header: ["TiempoExterior", "Temperatura", "Humedad", "Viento", "Jugar"],
+    body: [
+        ["soleado", "caluroso", "alta", "falso", "no"],
+        ["soleado", "caluroso", "alta", "verdad", "no"],
+        ["nublado", "caluroso", "alta", "falso", "si"],
+        ["lluvioso", "templado", "alta", "falso", "si"],
+        ["lluvioso", "frio", "normal", "falso", "si"],
+        ["lluvioso", "frio", "normal", "verdad", "no"],
+        ["nublado", "frio", "normal", "verdad", "si"],
+        ["soleado", "templado", "alta", "falso", "no"],
+        ["soleado", "frio", "normal", "falso", "si"],
+        ["lluvioso", "templado", "normal", "falso", "si"],
+        ["soleado", "templado", "normal", "verdad", "si"],
+        ["nublado", "templado", "alta", "verdad", "si"],
+        ["nublado", "caluroso", "normal", "falso", "si"],
+        ["lluvioso", "templado", "alta", "verdad", "no"]
+    ]
 }
 
 $(() => {
@@ -12,30 +27,13 @@ $(() => {
 
     let settingFunctions = settingPanel('.setting-panel>.setting');
 
-    var my_chart = new Treant(simple_chart_config);
+    new Treant(simple_chart_config);
 
     infoMessages();
 });
 
 function settingPanel(div) {
     let setting = $(div);
-
-    let stateButton = setting.find("button.state");
-    stateButton.on("click", () => {
-        try {
-            switch (stateButton.text()) {
-                case "Ejecutar":
-                    stateButton.text("Parar");
-                    break;
-                case "Parar":
-                    stateButton.text("Ejecutar");
-                    break;
-            }
-        } catch (err) {
-            stateButton.text("Ejecutar");
-            notifier.error(err.message);
-        }
-    });
 
     let decisionInput = setting.find("input[type='text'].decision");
     decisionInput.on("change", (e) => {
@@ -86,7 +84,30 @@ function settingPanel(div) {
         reader.readAsText(event.target.files[0]);
     });
 
-    return {};
+    let stateButton = setting.find("button.state");
+    stateButton.on("click", () => {
+        try {
+            switch (stateButton.text()) {
+                case "Ejecutar":
+                    stateButton.text("Parar");
+                    try {
+                        let algorithm = new Algorithm(data, decisionInput.val());
+                    } catch (err) {
+                        notifier.error(err.message);
+                    }
+                    break;
+                case "Parar":
+                    stateButton.text("Ejecutar");
+                    break;
+            }
+        } catch (err) {
+            stateButton.text("Ejecutar");
+            notifier.error(err.message);
+        }
+    });
+
+    return {
+    };
 }
 
 function updateData() {

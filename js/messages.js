@@ -2,10 +2,12 @@
 
 var messages = {
     error: {
-        paramNotInHeader: "El valor introducido no está en las cabeceras"
+        paramNotInHeader: "El valor introducido no está en las cabeceras",
+        incorrectData: "The introduced data has some error"
     },
     info: {
         uses: {
+            daddwa: "dka" 
         }
     }
 }

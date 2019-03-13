@@ -1,5 +1,74 @@
 "use strict"
 
+class Algorithm {
+    constructor(data, value) {
+        // Check if all rows has the same length, included header
+        if (!data.body
+            .map(line => line.length)
+            .every(element => element == data.header.length)
+        ) {
+            throw new Error(messages.error.incorrectData);
+        }
+
+        this.data = {};
+
+        data.header.forEach((element, i) => {
+            this.data[element] = [];
+            for (let j = 0; j < data.body.length; j++) {
+                this.data[element].push(data.body[j][i]);
+            }
+        });
+
+        this.execute(this.data, value);
+    }
+
+    execute(dataset, value) {
+        let merit = new Merit(["uno", "varios", "uno", "varios", "uno", "uno"], ["+", "-", "+", "-", "+", "-"]);
+        console.log(merit.calculate());
+    }
+}
+
+class Merit {
+    constructor(attribute, decision) {
+        this.attribute = attribute;
+        this.decision = decision;
+        this.attributeHeader = Array.from(new Set(this.attribute));
+        this.decisionHeader = Array.from(new Set(this.decision));
+
+        this.N = this.attribute.length;
+    }
+
+    calculate() {
+        return this.attributeHeader.reduce(
+            (ac, element) => {
+                let pair = {}
+                this.decisionHeader.forEach(decision => {
+                    pair[decision] = 0;
+                });
+                let count = this.attribute.reduce((acc, attr, index) => {
+                    if (element == attr) {
+                        pair[this.decision[index]]++;
+                        return acc + 1;
+                    }
+                    return acc;
+                }, 0);
+                return ac + ((count / this.N) * this.infor(pair[this.decisionHeader[0]] / count, pair[this.decisionHeader[1]] / count));
+            }, 0);
+    }
+
+    infor(p, n) {
+        let pValue = 0,
+            nValue = 0;
+        if (p != 0) {
+            pValue = -p * Math.log2(p);
+        }
+        if (n != 0) {
+            nValue = -n * Math.log2(n);
+        }
+        return pValue + nValue;
+    }
+}
+
 var simple_chart_config = {
     chart: {
         container: ".tree",
@@ -24,8 +93,7 @@ var simple_chart_config = {
     nodeStructure: {
         text: {
             name: {
-                val: "Djokovic, Novak",
-                href: "http://www.atpworldtour.com/Tennis/Players/Top-Players/Novak-Djokovic.aspx"
+                val: "Djokovic, Novak"
             },
             desc: "dkadjw"
         },
