@@ -136,7 +136,7 @@
     overflow: hidden;
 }
 
-.table-panel {
+.info-panel {
     position: relative;
     top: 0;
     bottom: 0;
@@ -147,36 +147,41 @@
     background-color: var(--secondary-color);
 }
 
-.table-panel>table {
+.info-panel>.information {
     position: absolute;
     top: 20px;
     left: 20px;
     right: 20px;
     width: calc(100% - 40px);
-    height: calc(70% - 30px);
+    height: calc(100% - 40px);
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     overflow: auto;
     background-color: var(--secondary-color);
 }
 
-.table-panel>.solution {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
+.info-panel>.information>table {
+    margin: 10px 10px 5px 10px;
+    background-color: var(--secondary-color);
+}
+
+.info-panel>.information>.solution {
+    padding: 10px;
+    margin: 5px 10px 10px 10px;
+    bottom: 0;
     width: calc(100% - 40px);
-    height: calc(30% - 30px);
+    height: 30%;
+    min-height: 30%;
     border-radius: 5px;
     resize: none;
+    overflow-x: none;
     overflow-y: auto;
     background-color: var(--secondary-light-color);
 }
 
-.table-panel>table th {
+.info-panel>.information>table th {
     text-align: center;
     min-width: 100px;
     max-width: 100px;
@@ -185,7 +190,7 @@
     background-color: var(--secondary-dark-color);
 }
 
-.table-panel>table td {
+.info-panel>.information>table td {
     text-align: center;
     min-width: 100px;
     max-width: 100px;
@@ -194,55 +199,55 @@
     background-color: var(--secondary-light-color);
 }
 
-.table-panel>table::-webkit-scrollbar {
+.info-panel>.information::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
 
-.table-panel>table::-webkit-scrollbar-track {
+.info-panel>.information::-webkit-scrollbar-track {
     background: var(--secondary-light-color);
     padding: 1px;
     border-radius: 5px;
 }
 
-.table-panel>table::-webkit-scrollbar-thumb {
+.info-panel>.information::-webkit-scrollbar-thumb {
     background: var(--secondary-dark-color);
     border-radius: 5px;
 }
 
-.table-panel>table::-webkit-scrollbar-thumb:hover {
+.info-panel>.information::-webkit-scrollbar-thumb:hover {
     background-image: linear-gradient(to right, var(--secondary-light-color), var(--secondary-dark-color));
 }
 
-.table-panel>table::-webkit-scrollbar-corner {
+.info-panel>.information::-webkit-scrollbar-corner {
     background: var(--secondary-color);
 }
 
-.table-panel>.solution::-webkit-scrollbar {
+.info-panel>.information>.solution::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
 
-.table-panel>.solution::-webkit-scrollbar-track {
+.info-panel>.information>.solution::-webkit-scrollbar-track {
     background: var(--secondary-light-color);
     padding: 1px;
     border-radius: 5px;
 }
 
-.table-panel>.solution::-webkit-scrollbar-thumb {
+.info-panel>.information>.solution::-webkit-scrollbar-thumb {
     background: var(--secondary-dark-color);
     border-radius: 5px;
 }
 
-.table-panel>.solution::-webkit-scrollbar-corner {
-    background: var(--secondary-color);
-}
-
-.table-panel>.solution::-webkit-scrollbar-thumb:hover {
+.info-panel>.information>.solution::-webkit-scrollbar-thumb:hover {
     background-image: linear-gradient(to right, var(--secondary-light-color), var(--secondary-dark-color));
 }
 
-.table-panel>.resizer#left {
+.info-panel>.information>.solution::-webkit-scrollbar-corner {
+    background: var(--secondary-color);
+}
+
+.info-panel>.resizer#left {
     position: absolute;
     left: 0;
     width: 5px;

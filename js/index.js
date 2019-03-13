@@ -8,7 +8,7 @@ var data = {
 
 $(() => {
     makeResizableDiv('.setting-panel');
-    makeResizableDiv('.table-panel');
+    makeResizableDiv('.info-panel');
 
     let settingFunctions = settingPanel('.setting-panel>.setting');
 
@@ -69,7 +69,7 @@ function settingPanel(div) {
 }
 
 function updateData() {
-    let table = $(".table-panel>table");
+    let table = $(".info-panel>.information>table");
     table.empty();
 
     let row = undefined;
