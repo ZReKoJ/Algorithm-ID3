@@ -2,4 +2,5 @@
 
 var CONFIG = {
     DELIMITER: ",",
+    DECISION: ""
 }

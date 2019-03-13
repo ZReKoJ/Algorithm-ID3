@@ -12,6 +12,8 @@ $(() => {
 
     let settingFunctions = settingPanel('.setting-panel>.setting');
 
+    var my_chart = new Treant(simple_chart_config);
+
     infoMessages();
 });
 
@@ -35,6 +37,21 @@ function settingPanel(div) {
         }
     });
 
+    let decisionInput = setting.find("input[type='text'].decision");
+    decisionInput.on("change", (e) => {
+        let value = decisionInput.val();
+        let index = data.header.findIndex(element => element == value);
+        if (index == -1) {
+            if (data.header.length > 0) {
+                CONFIG.DECISION = data.header[data.header.length - 1];
+                decisionInput.val(data.header[data.header.length - 1]);
+            }
+            notifier.error(messages.error.paramNotInHeader);
+        } else {
+            CONFIG.DECISION = value;
+        }
+    });
+
     let delimiterInput = setting.find("input[type='text'].delimiter");
     delimiterInput.on("change", (e) => {
         CONFIG.DELIMITER = delimiterInput.val();
@@ -45,6 +62,10 @@ function settingPanel(div) {
         let reader = new FileReader();
         reader.onload = function () {
             let header = reader.result.split(CONFIG.DELIMITER);
+            if (header.length > 0) {
+                CONFIG.DECISION = header[header.length - 1];
+                decisionInput.val(header[header.length - 1]);
+            }
             header = header.map(element => element.replace("\n", ""));
             data.header = header;
             updateData();
