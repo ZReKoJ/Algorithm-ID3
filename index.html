@@ -2,11 +2,8 @@
 <html lang="es">
 
 <head>
-    <title>A Search Algorithm</title>
+    <title>ID3 Algorithm</title>
     <meta charset="utf-8" />
-    <!--
-    <link rel="icon" href="./resources/cv.png" />
-    -->
     <link rel="stylesheet" href="./css/utils.css" />
     <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/index.css" />
@@ -55,21 +52,155 @@
         <div class="main">
             <div class="map-panel">
                 <div class="draw-panel">
-                    <canvas></canvas>
                 </div>
-                <div class="icon-panel">
-                    <div class="icons">
-                    </div>
+                <div class="table-panel">
+                    <table>
+                        <tr>
+                            <th>TiempoExterior</th>
+                            <th>Temperatura</th>
+                            <th>Humedad</th>
+                            <th>Viento</th>
+                            <th>Jugar
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>soleado</td>
+                            <td>caluroso</td>
+                            <td>alta</td>
+                            <td>falso</td>
+                            <td>no
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>soleado</td>
+                            <td>caluroso</td>
+                            <td>alta</td>
+                            <td>verdad</td>
+                            <td>no
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>nublado</td>
+                            <td>caluroso</td>
+                            <td>alta</td>
+                            <td>falso</td>
+                            <td>si
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>lluvioso</td>
+                            <td>templado</td>
+                            <td>alta</td>
+                            <td>falso</td>
+                            <td>si
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>lluvioso</td>
+                            <td>frio</td>
+                            <td>normal</td>
+                            <td>falso</td>
+                            <td>si
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>lluvioso</td>
+                            <td>frio</td>
+                            <td>normal</td>
+                            <td>verdad</td>
+                            <td>no
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>nublado</td>
+                            <td>frio</td>
+                            <td>normal</td>
+                            <td>verdad</td>
+                            <td>si
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>soleado</td>
+                            <td>templado</td>
+                            <td>alta</td>
+                            <td>falso</td>
+                            <td>no
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>soleado</td>
+                            <td>frio</td>
+                            <td>normal</td>
+                            <td>falso</td>
+                            <td>si
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>lluvioso</td>
+                            <td>templado</td>
+                            <td>normal</td>
+                            <td>falso</td>
+                            <td>si
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>soleado</td>
+                            <td>templado</td>
+                            <td>normal</td>
+                            <td>verdad</td>
+                            <td>si
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>nublado</td>
+                            <td>templado</td>
+                            <td>alta</td>
+                            <td>verdad</td>
+                            <td>si
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>nublado</td>
+                            <td>caluroso</td>
+                            <td>normal</td>
+                            <td>falso</td>
+                            <td>si
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>lluvioso</td>
+                            <td>templado</td>
+                            <td>alta</td>
+                            <td>verdad</td>
+                            <td>no
+                            </td>
+                        </tr>
+                    </table>
+                    <textarea class="solution"></textarea>
                     <div class="resizer" id='left'></div>
                 </div>
             </div>
             <div class="setting-panel">
                 <div class="setting">
                     <div class="box">
-                        <input class="image" type="file" accept="image/png, image/jpeg">
+                        <button class="button state">Ejecutar</button>
                     </div>
                     <div class="box">
-                        <input class="image" type="file" accept="image/png, image/jpeg">
+                        <div class="data-header button file-upload">
+                            <label for="data-header">Subir Cabeceras</label>
+                            <input id="data-header" type="file" accept="text/plain, .csv">
+                        </div>
+                        <div class="space"></div>
+                        <div class="data-body button file-upload">
+                            <label for="data-body">Subir datos</label>
+                            <input id="data-body" type="file" accept="text/plain, .csv">
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div>
+                            <label>Delimitador:</label>
+                            <input class="delimiter" type="text" value=",">
+                        </div>
                     </div>
                 </div>
                 <div class="resizer" id='top'></div>

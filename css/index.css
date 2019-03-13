@@ -57,29 +57,15 @@
     height: 30px;
 }
 
-.setting-panel>.setting>.box label {
-    margin-right: 3px;
-    color: var(--on-primary-color);
-}
-
 .setting-panel>.setting>.box .space {
     width: 5px;
 }
 
-.setting-panel>.setting>.box button {
-    background-color: var(--secondary-color);
-    color: var(--on-secondary-color);
-}
-
 .setting-panel>.setting>.box input[type="file"] {
-    color: var(--on-primary-color);
-    font-weight: bold;
-    padding-top: 10px;
-    font-size: 12px;
-    cursor: pointer;
+    display: none;
 }
 
-.setting-panel>.setting>.box input[type="number"] {
+.setting-panel>.setting>.box input[type="text"] {
     font-weight: bold;
     height: 80%;
     padding: 0 5px 0 5px;
@@ -87,6 +73,28 @@
     flex-grow: 100;
     color: var(--on-secondary-color);
     background-color: var(--secondary-color);
+}
+
+.setting-panel>.setting>.box label {
+    margin-right: 3px;
+    color: var(--on-primary-color);
+}
+
+.setting-panel>.setting>.box .button {
+    -webkit-appearance: none;
+    font-size: 15px;
+    background-color: var(--secondary-color);
+    color: var(--on-secondary-color);
+}
+
+.setting-panel>.setting>.box>.file-upload>label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: var(--on-secondary-color);
+    cursor: pointer;
 }
 
 .setting-panel>.setting::-webkit-scrollbar {
@@ -105,7 +113,7 @@
 }
 
 .setting-panel>.setting::-webkit-scrollbar-thumb:hover {
-    background-image: linear-gradient(to right, var(--primary-color) , var(--primary-dark-color));
+    background-image: linear-gradient(to right, var(--primary-color), var(--primary-dark-color));
 }
 
 .setting-panel>.setting>* {
@@ -128,86 +136,113 @@
     overflow: hidden;
 }
 
-.icon-panel {
+.table-panel {
     position: relative;
     top: 0;
     bottom: 0;
     right: 0;
-    width: 200px;
-    min-width: 200px;
-    max-width: 300px;
+    width: 300px;
+    min-width: 300px;
     height: 100%;
     background-color: var(--secondary-color);
 }
 
-.icon-panel>.icons {
+.table-panel>table {
     position: absolute;
     top: 20px;
     left: 20px;
     right: 20px;
     width: calc(100% - 40px);
-    max-height: calc(100% - 40px);
+    height: calc(70% - 30px);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-start;
+    overflow: auto;
+    background-color: var(--secondary-color);
+}
+
+.table-panel>.solution {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    width: calc(100% - 40px);
+    height: calc(30% - 30px);
+    border-radius: 5px;
+    resize: none;
     overflow-y: auto;
+    background-color: var(--secondary-light-color);
 }
 
-.icon-panel>.icons::-webkit-scrollbar {
+.table-panel>table th {
+    text-align: center;
+    min-width: 100px;
+    max-width: 100px;
+    height: 30px;
+    overflow: hidden;
+    background-color: var(--secondary-dark-color);
+}
+
+.table-panel>table td {
+    text-align: center;
+    min-width: 100px;
+    max-width: 100px;
+    height: 30px;
+    overflow: hidden;
+    background-color: var(--secondary-light-color);
+}
+
+.table-panel>table::-webkit-scrollbar {
     width: 10px;
+    height: 10px;
 }
 
-.icon-panel>.icons::-webkit-scrollbar-track {
+.table-panel>table::-webkit-scrollbar-track {
     background: var(--secondary-light-color);
     padding: 1px;
     border-radius: 5px;
 }
 
-.icon-panel>.icons::-webkit-scrollbar-thumb {
+.table-panel>table::-webkit-scrollbar-thumb {
     background: var(--secondary-dark-color);
     border-radius: 5px;
 }
 
-.icon-panel>.icons::-webkit-scrollbar-thumb:hover {
-    background-image: linear-gradient(to right, var(--secondary-light-color) , var(--secondary-dark-color));
+.table-panel>table::-webkit-scrollbar-thumb:hover {
+    background-image: linear-gradient(to right, var(--secondary-light-color), var(--secondary-dark-color));
 }
 
-.icon-panel>.icons>.icon {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: calc(50px - 4px);
-    height: calc(50px - 4px);
-    border: 2px solid transparent;
+.table-panel>table::-webkit-scrollbar-corner {
+    background: var(--secondary-color);
 }
 
-.icon-panel>.icons>.icon:hover {
-    border: 2px solid greenyellow;
+.table-panel>.solution::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
 }
 
-.icon-panel>.icons img {
-    width: calc(100% - 4px);
-    height: auto;
-    z-index: 10;
+.table-panel>.solution::-webkit-scrollbar-track {
+    background: var(--secondary-light-color);
+    padding: 1px;
+    border-radius: 5px;
 }
 
-.icon-panel>.icons input[type='radio'] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--secondary-dark-color);
+.table-panel>.solution::-webkit-scrollbar-thumb {
+    background: var(--secondary-dark-color);
+    border-radius: 5px;
 }
 
-.icon-panel>.icons input[type='radio']:checked {
-    background-color: var(--secondary-light-color);
+.table-panel>.solution::-webkit-scrollbar-corner {
+    background: var(--secondary-color);
 }
 
-.icon-panel>.resizer#left {
+.table-panel>.solution::-webkit-scrollbar-thumb:hover {
+    background-image: linear-gradient(to right, var(--secondary-light-color), var(--secondary-dark-color));
+}
+
+.table-panel>.resizer#left {
     position: absolute;
     left: 0;
     width: 5px;
