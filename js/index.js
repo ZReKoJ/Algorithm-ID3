@@ -31,7 +31,7 @@ $(() => {
     makeResizableDiv('.setting-panel');
     makeResizableDiv('.info-panel');
 
-    new ResizeSensor($('.tree'), () => {
+    new ResizeSensor($('.draw-panel'), () => {
         if (tree) {
             tree.tree.reload();
         }
