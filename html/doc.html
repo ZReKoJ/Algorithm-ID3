@@ -43,15 +43,9 @@
             <p align="center"><a href="https://github.com/ZReKoJ/ID3-Algorithm">Repositorio github</a></p>
             <h2 id="description" align="center">Descripción</h2>
             <div class="list-group">
-                <p class="list-group-item">Se trata de una aplicación que simula un algoritmo A estrella.</p>
-                <p class="list-group-item">Se permite realizar un recorrido por distintas posiciones predeterminadas
-                    denominadas "way points".</p>
-                <p class="list-group-item">Se puede determinar celdas que son relativamente peligrosas, pero que pueden
-                    atravesarse
-                    asumiendo un cierto riesgo.</p>
-                <p class="list-group-item">Da la posibilidad de varios vehículos en colaboración, en los que si una
-                    celda ha sido ya
-                    ocupada por uno quede prohibida para otro evitando colisiones.</p>
+                <p class="list-group-item">Se trata de una aplicación que simula un algoritmo ID3.</p>
+                <p class="list-group-item">El algoritmo está implementado de manera que por cada ejecución resuelve una
+                    tabla en concreta, y es la función en sí misma recursiva hasta que se resuelva todas sus ramas.</p>
             </div>
             <h2 id="contributors" align="center">Integrantes</h2>
             <ul class="list-group">
@@ -62,31 +56,17 @@
                 <p class="list-group-item">La vista del programa consiste en 4 zonas: Cabecera, Plano, Iconos y
                     Settings.</p>
                 <p class="list-group-item">Cabecera: Para la transición con otras páginas como la de documentación.</p>
-                <p class="list-group-item">Plano: Donde se realiza la simulación.</p>
-                <p class="list-group-item">Iconos: Se encuentra todos los objetos que se pueden colocar.</p>
-                <p class="list-group-item">None: Se usa para borrar objetos.</p>
-                <p class="list-group-item">Bloque blanco: Son los obstáculos del plano.</p>
-                <p class="list-group-item">Avatar: Inicio de la ruta</p>
-                <p class="list-group-item">Bandera: Los sitios que hay que pasar. El orden es según lo creas.</p>
-                <p class="list-group-item">Exclamación: Celdas peligrosas.</p>
+                <p class="list-group-item">Plano: Donde se dibuja el árbol.</p>
+                <p class="list-group-item">Tabla: Se encuentra los datos cargados.</p>
+                <p class="list-group-item">Cuadro de texto: Se encuentra las sentencias condicionales de la solución.</p>
                 <p class="list-group-item">Settings: Para configuraciones.</p>
-                <p class="list-group-item">La anchura y la altura determinan las dimensiones.</p>
-                <p class="list-group-item">El botón de reset es para resetear todo a la configuración que está en el
-                    panel de settings.</p>
-                <p class="list-group-item">Hay dos tipos de vistas: una vista aérea y otra perspectiva, se intercambian
-                    con el botón de vista.</p>
                 <p class="list-group-item">El botón de ejecutar es para inicializar la simulación.</p>
-                <p class="list-group-item">Zoom es el ratio de zoom in y zoom out.</p>
-                <p class="list-group-item">Desplazamiento es el ángulo por el que gira la vista de la cámara.</p>
-                <p class="list-group-item">Velocidad es la velocidad que se simula el camino.</p>
-                <p class="list-group-item">Peligro es el porcentaje en el cual una celda peligrosa se pueda activar.</p>
-                <p class="list-group-item">El botón para la subida de una imagen para cargar un plano con alturas (sin
-                    hacer).</p>
-                <p class="list-group-item">Al hacer scroll en el ratón se puede realizar el zoom. También con la tecla
-                    espacio para zoom in, ctrl + espacio para zoom out.</p>
-                <p class="list-group-item">Con el botón izquierdo del ratón se van asignando los objetos en el plano.</p>
-                <p class="list-group-item">Con el botón derecho del ratón se cambia la posición de vista de la cámara.
-                    También se con las teclas de dirección del teclado.</p>
+                <p class="list-group-item">El botón subir cabeceras es para cargar los títulos de los atributos.</p>
+                <p class="list-group-item">El botón subir datos es para cargar los valores de los atributos.</p>
+                <p class="list-group-item">Para la organización de los textos se aceptan textos planos u otros extensiones como .csv.</p>
+                <p class="list-group-item">Si se usa Windows hay que dejar un Enter al final puesto que no se aceptan caracteres raros en el fichero, que causarían problemas al parsear.</p>
+                <p class="list-group-item">El input delimitador es para indicar que signo se usa para separar las palabras en los documentos cargados.</p>
+                <p class="list-group-item">El input decisión es para indicar qué atributo es la de decisión.</p>
             </div>
             <h2 id="views" align="center">Vistas</h2>
             <div class="list-group">
@@ -109,12 +89,12 @@
             </div>
             <h2 id="resources" align="center">Recursos</h2>
             <div class="list-group">
-                <a target="_blank" href="https://threejs.org/" class="list-group-item list-group-item-action flex-column align-items-start">
+                <a target="_blank" href="http://fperucic.github.io/treant-js/" class="list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Three js</h5>
-                        <small class="text-muted">Librería javascript para modelado en 3D</small>
+                        <h5 class="mb-1">Treant JS</h5>
+                        <small class="text-muted">Librería javascript para dibujar árboles</small>
                     </div>
-                    <p class="mb-1">Es la librería que se usa en el proyecto dibujar objetos en 3D.</p>
+                    <p class="mb-1">Es la librería que se usa en el proyecto para dibujar árboles.</p>
                     <small class="text-muted">Click para redirigir a la página</small>
                 </a>
                 <a target="_blank" href="https://github.com/flowkey/resize-sensor" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -123,7 +103,7 @@
                         <small class="text-muted">Librería javascript controlar si se ha cambiado de dimensión un
                             elemento</small>
                     </div>
-                    <p class="mb-1">Es la librería que se usa en el proyecto para saber si el canvas ha cambiado de
+                    <p class="mb-1">Es la librería que se usa en el proyecto para saber si el panel de dibujo ha cambiado de
                         dimensión.</p>
                     <small class="text-muted">Click para redirigir a la página</small>
                 </a>
