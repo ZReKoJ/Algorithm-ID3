@@ -42,7 +42,7 @@ class Algorithm {
 
     execute(dataset, value) {
         if (Object.keys(dataset).length <= 1) {
-            return new Node("Not defined");
+            return new Node(messages.error.notDefined);
         }
 
         if (dataset[value].every(element => element == dataset[value][0])) {

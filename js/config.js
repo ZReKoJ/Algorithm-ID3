@@ -6,13 +6,13 @@ var CONFIG = {
     SHOW_MESSAGES_INTERVAL: 30000,
     TREE_CHART: {
         container: ".tree",
-        levelSeparation: 20,
-        siblingSeparation: 15,
-        subTeeSeparation: 15,
+        levelSeparation: 100,
+        siblingSeparation: 50,
+        subTeeSeparation: 50,
         rootOrientation: "NORTH",
 
         node: {
-            HTMLclass: "tennis-draw",
+            HTMLclass: "node",
             drawLineThrough: true
         },
         connectors: {

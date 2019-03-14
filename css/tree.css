@@ -1,0 +1,26 @@
+.node {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.node-name {
+    font-weight: bold;
+    text-align: center;
+    font-size: large;
+    color: var(--on-secondary-color);
+}
+
+.node-desc {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    font-size: small;
+    text-align: center;
+    color: var(--on-secondary-color);
+}
