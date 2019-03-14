@@ -1,6 +1,6 @@
 ## INGENIERÍA DEL CONOCIMIENTO
 
-## github pages link ...
+## https://zrekoj.github.io/ID3-Algorithm/
 
 # Práctica 2: Árbol de decisión (ID3) (versión reducida)
 
