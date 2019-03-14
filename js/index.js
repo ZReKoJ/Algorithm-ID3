@@ -2,6 +2,11 @@
 
 var notifier = new Notifier();
 var data = {
+    header: [],
+    body: []
+}
+/*
+data = {
     header: ["TiempoExterior", "Temperatura", "Humedad", "Viento", "Jugar"],
     body: [
         ["soleado", "caluroso", "alta", "falso", "no"],
@@ -20,22 +25,26 @@ var data = {
         ["lluvioso", "templado", "alta", "verdad", "no"]
     ]
 }
+/**/
+
+data = {
+    header: ["Tamano", "Timbres", "Portero", "Clase"],
+    body: [
+        ["pequeno", "uno", "no", "+"],
+        ["pequeno", "varios", "si", "-"],
+        ["mediano", "uno", "no", "+"],
+        ["grande", "varios", "no", "-"],
+        ["pequeno", "uno", "si", "+"],
+        ["grande", "uno", "si", "-"]
+    ]
+}
+/**/
 
 $(() => {
     makeResizableDiv('.setting-panel');
     makeResizableDiv('.info-panel');
 
-    let settingFunctions = settingPanel('.setting-panel>.setting');
-
-    new Treant(simple_chart_config);
-
-    infoMessages();
-});
-
-function settingPanel(div) {
-    let setting = $(div);
-
-    let decisionInput = setting.find("input[type='text'].decision");
+    let decisionInput = $(".setting-panel>.setting input[type='text'].decision");
     decisionInput.on("change", (e) => {
         let value = decisionInput.val();
         let index = data.header.findIndex(element => element == value);
@@ -50,28 +59,28 @@ function settingPanel(div) {
         }
     });
 
-    let delimiterInput = setting.find("input[type='text'].delimiter");
+    let delimiterInput = $(".setting-panel>.setting input[type='text'].delimiter");
     delimiterInput.on("change", (e) => {
         CONFIG.DELIMITER = delimiterInput.val();
     });
 
-    let headerInput = setting.find("input[type='file']#data-header");
+    let headerInput = $(".setting-panel>.setting input[type='file']#data-header");
     headerInput.on("change", (e) => {
         let reader = new FileReader();
         reader.onload = function () {
             let header = reader.result.split(CONFIG.DELIMITER);
+            header = header.map(element => element.replace("\n", ""));
             if (header.length > 0) {
                 CONFIG.DECISION = header[header.length - 1];
                 decisionInput.val(header[header.length - 1]);
             }
-            header = header.map(element => element.replace("\n", ""));
             data.header = header;
             updateData();
         };
         reader.readAsText(event.target.files[0]);
     });
 
-    let bodyInput = setting.find("input[type='file']#data-body");
+    let bodyInput = $(".setting-panel>.setting input[type='file']#data-body");
     bodyInput.on("change", (e) => {
         let reader = new FileReader();
         reader.onload = function () {
@@ -84,31 +93,23 @@ function settingPanel(div) {
         reader.readAsText(event.target.files[0]);
     });
 
-    let stateButton = setting.find("button.state");
+    let stateButton = $(".setting-panel>.setting button.state");
     stateButton.on("click", () => {
         try {
-            switch (stateButton.text()) {
-                case "Ejecutar":
-                    stateButton.text("Parar");
-                    try {
-                        let algorithm = new Algorithm(data, decisionInput.val());
-                    } catch (err) {
-                        notifier.error(err.message);
-                    }
-                    break;
-                case "Parar":
-                    stateButton.text("Ejecutar");
-                    break;
-            }
+            let algorithm = new Algorithm(data);
+            let node = algorithm.execute(algorithm.getData(), CONFIG.DECISION);
+            new Treant({
+                chart: CONFIG.TREE_CHART,
+                nodeStructure: node
+            });
         } catch (err) {
-            stateButton.text("Ejecutar");
             notifier.error(err.message);
+            console.log(err);
         }
     });
 
-    return {
-    };
-}
+    infoMessages();
+});
 
 function updateData() {
     let table = $(".info-panel>.information>table");

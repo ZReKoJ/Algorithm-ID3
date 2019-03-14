@@ -7,7 +7,6 @@ var messages = {
     },
     info: {
         uses: {
-            daddwa: "dka" 
         }
     }
 }

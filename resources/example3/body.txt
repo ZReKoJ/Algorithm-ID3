@@ -1,0 +1,10 @@
+si,mayor5,600a1200,si,si
+no,menor1,600a1200,si,no
+si,1a5,mayor1200,si,no
+no,mayor5,mayor1200,no,si
+no,menor1,mayor1200,si,si
+si,1a5,600a1200,si,no
+no,1a5,mayor1200,si,si
+no,menor1,menor600,si,no
+no,mayor5,600a1200,no,no
+no,1a5,menor600,no,no
