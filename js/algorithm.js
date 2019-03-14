@@ -3,7 +3,8 @@
 class Node {
     constructor(name) {
         this.text = {
-            name: name
+            name: name,
+            desc: ""
         }
 
         this.children = [];
@@ -11,6 +12,21 @@ class Node {
 
     addChild(node) {
         this.children.push(node);
+    }
+}
+
+function solution(text, node) {
+    if (node.children.length > 0) {
+        let string = text +
+            (node.text.desc == "" ? "" : "(" + node.text.desc + ")" + " && ") +
+            node.text.name;
+        return node.children.map(
+            child => solution(string, child)
+        ).join("\n");
+    } else {
+        return text +
+            (node.text.desc == "" ? "" : "(" + node.text.desc + ")") +
+            " -> " + node.text.name;
     }
 }
 

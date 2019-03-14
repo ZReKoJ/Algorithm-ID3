@@ -31,11 +31,7 @@ $(() => {
     makeResizableDiv('.setting-panel');
     makeResizableDiv('.info-panel');
 
-    new ResizeSensor($('.draw-panel'), () => {
-        if (tree) {
-            tree.tree.reload();
-        }
-    });
+    let textarea = $(".info-panel>.information>.solution");
 
     let decisionInput = $(".setting-panel>.setting input[type='text'].decision");
     decisionInput.on("change", (e) => {
@@ -91,7 +87,7 @@ $(() => {
         try {
             let algorithm = new Algorithm(data);
             let node = algorithm.execute(algorithm.getData(), CONFIG.DECISION);
-
+            textarea.val(solution("", node));
             tree = new Treant({
                 chart: CONFIG.TREE_CHART,
                 nodeStructure: node
@@ -102,6 +98,7 @@ $(() => {
                 tree.destroy();
                 tree = undefined;
             }
+            textarea.val("");
         }
     });
 
