@@ -11,7 +11,8 @@ var messages = {
         uses: {
             noWierdChar: "No se permiten añadir caracteres raros en los documentos",
             noConfusion: "No confundir las cabeceras y los datos al subir",
-            decisionLength2: "El atributo decisión solo debe tener dos valores"
+            decisionLength2: "El atributo decisión solo debe tener dos valores",
+            execution: "Añadir los datos y ejecutar"
         }
     }
 }
