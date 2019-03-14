@@ -33,7 +33,7 @@ class Algorithm {
         this.data.header.forEach((element, i) => {
             dataset[element] = [];
             for (let j = 0; j < this.data.body.length; j++) {
-                dataset[element].push(this.data.body[j][i]);
+                dataset[element].push(String(this.data.body[j][i]));
             }
         });
 
@@ -41,6 +41,10 @@ class Algorithm {
     }
 
     execute(dataset, value) {
+        if (Object.keys(dataset).length <= 1) {
+            return new Node("Not defined");
+        }
+
         if (dataset[value].every(element => element == dataset[value][0])) {
             return new Node(dataset[value][0]);
         }
@@ -52,7 +56,7 @@ class Algorithm {
             .map(
                 data => new Merit(data, dataset[data], dataset[value])
             )
-            .sort((a, b) => a.calculate() < b.calculate() ? -1 : 0)[0];
+            .sort((a, b) => a.calculate() < b.calculate() ? -1 : 1)[0];
 
         let node = new Node(merit.name);
         merit.attributeSet.forEach(header => {
@@ -97,7 +101,7 @@ class Merit {
     }
 
     calculate() {
-        return this.attributeSet.reduce(
+        this.value = this.attributeSet.reduce(
             (ac, element) => {
                 let pair = {}
                 this.decisionSet.forEach(decision => {
@@ -112,6 +116,7 @@ class Merit {
                 }, 0);
                 return ac + ((count / this.N) * this.infor(pair[this.decisionSet[0]] / count, pair[this.decisionSet[1]] / count));
             }, 0);
+        return this.value;
     }
 
     infor(p, n) {

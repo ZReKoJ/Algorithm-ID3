@@ -1,11 +1,12 @@
 'use strict'
 
 var notifier = new Notifier();
+var tree = undefined;
 var data = {
     header: [],
     body: []
 }
-/*
+
 data = {
     header: ["TiempoExterior", "Temperatura", "Humedad", "Viento", "Jugar"],
     body: [
@@ -25,24 +26,16 @@ data = {
         ["lluvioso", "templado", "alta", "verdad", "no"]
     ]
 }
-/**/
-
-data = {
-    header: ["Tamano", "Timbres", "Portero", "Clase"],
-    body: [
-        ["pequeno", "uno", "no", "+"],
-        ["pequeno", "varios", "si", "-"],
-        ["mediano", "uno", "no", "+"],
-        ["grande", "varios", "no", "-"],
-        ["pequeno", "uno", "si", "+"],
-        ["grande", "uno", "si", "-"]
-    ]
-}
-/**/
 
 $(() => {
     makeResizableDiv('.setting-panel');
     makeResizableDiv('.info-panel');
+
+    new ResizeSensor($('.draw-panel'), () => {
+        if (tree) {
+            tree.tree.reload();
+        }
+    });
 
     let decisionInput = $(".setting-panel>.setting input[type='text'].decision");
     decisionInput.on("change", (e) => {
@@ -98,7 +91,8 @@ $(() => {
         try {
             let algorithm = new Algorithm(data);
             let node = algorithm.execute(algorithm.getData(), CONFIG.DECISION);
-            new Treant({
+
+            tree = new Treant({
                 chart: CONFIG.TREE_CHART,
                 nodeStructure: node
             });

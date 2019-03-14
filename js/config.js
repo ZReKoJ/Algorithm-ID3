@@ -2,7 +2,7 @@
 
 var CONFIG = {
     DELIMITER: ",",
-    DECISION: "Clase",
+    DECISION: "Jugar",
     SHOW_MESSAGES_INTERVAL: 30000,
     TREE_CHART: {
         container: ".tree",

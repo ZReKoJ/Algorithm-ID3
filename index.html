@@ -13,6 +13,8 @@
     <!-- Treant drawing trees -->
     <script src="./js/raphael.js"></script>
     <script src="./js/Treant.js"></script>
+    <!-- On resize listener library -->
+    <script src="./js/resize-sensor.js"></script>
     <script src="./js/config.js"></script>
     <!-- String data messages -->
     <script src="./js/messages.js"></script>
@@ -63,6 +65,125 @@
                 <div class="info-panel">
                     <div class="information">
                         <table>
+                            <tr>
+                                <th>TiempoExterior</th>
+                                <th>Temperatura</th>
+                                <th>Humedad</th>
+                                <th>Viento</th>
+                                <th>Jugar</th>
+                            </tr>
+                            <tr>
+                                <td>soleado</td>
+                                <td>caluroso</td>
+                                <td>alta</td>
+                                <td>falso</td>
+                                <td>no
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>soleado</td>
+                                <td>caluroso</td>
+                                <td>alta</td>
+                                <td>verdad</td>
+                                <td>no
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>nublado</td>
+                                <td>caluroso</td>
+                                <td>alta</td>
+                                <td>falso</td>
+                                <td>si
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>lluvioso</td>
+                                <td>templado</td>
+                                <td>alta</td>
+                                <td>falso</td>
+                                <td>si
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>lluvioso</td>
+                                <td>frio</td>
+                                <td>normal</td>
+                                <td>falso</td>
+                                <td>si
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>lluvioso</td>
+                                <td>frio</td>
+                                <td>normal</td>
+                                <td>verdad</td>
+                                <td>no
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>nublado</td>
+                                <td>frio</td>
+                                <td>normal</td>
+                                <td>verdad</td>
+                                <td>si
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>soleado</td>
+                                <td>templado</td>
+                                <td>alta</td>
+                                <td>falso</td>
+                                <td>no
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>soleado</td>
+                                <td>frio</td>
+                                <td>normal</td>
+                                <td>falso</td>
+                                <td>si
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>lluvioso</td>
+                                <td>templado</td>
+                                <td>normal</td>
+                                <td>falso</td>
+                                <td>si
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>soleado</td>
+                                <td>templado</td>
+                                <td>normal</td>
+                                <td>verdad</td>
+                                <td>si
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>nublado</td>
+                                <td>templado</td>
+                                <td>alta</td>
+                                <td>verdad</td>
+                                <td>si
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>nublado</td>
+                                <td>caluroso</td>
+                                <td>normal</td>
+                                <td>falso</td>
+                                <td>si
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>lluvioso</td>
+                                <td>templado</td>
+                                <td>alta</td>
+                                <td>verdad</td>
+                                <td>no
+                                </td>
+                            </tr>
                         </table>
                         <textarea class="solution" readonly>Añadir los datos y ejecutar</textarea>
                     </div>
@@ -93,7 +214,7 @@
                         <div class="space"></div>
                         <div>
                             <label>Decisión:</label>
-                            <input class="decision" type="text" value="">
+                            <input class="decision" type="text" value="Jugar">
                         </div>
                     </div>
                 </div>
