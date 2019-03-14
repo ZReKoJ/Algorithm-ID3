@@ -98,7 +98,10 @@ $(() => {
             });
         } catch (err) {
             notifier.error(err.message);
-            console.log(err);
+            if (tree) {
+                tree.destroy();
+                tree = undefined;
+            }
         }
     });
 

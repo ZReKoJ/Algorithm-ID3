@@ -97,6 +97,10 @@ class Merit {
         this.attributeSet = Array.from(new Set(this.attribute));
         this.decisionSet = Array.from(new Set(this.decision));
 
+        if (this.decisionSet.length != 2) {
+            throw new Error(messages.error.decisionLength2);
+        }
+
         this.N = this.attribute.length;
     }
 
