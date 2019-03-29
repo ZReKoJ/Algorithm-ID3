@@ -15,21 +15,6 @@ class Node {
     }
 }
 
-function solution(text, node) {
-    if (node.children.length > 0) {
-        let string = text +
-            (node.text.desc == "" ? "" : "(" + node.text.desc + ")" + " && ") +
-            node.text.name;
-        return node.children.map(
-            child => solution(string, child)
-        ).join("\n");
-    } else {
-        return text +
-            (node.text.desc == "" ? "" : "(" + node.text.desc + ")") +
-            " -> " + node.text.name;
-    }
-}
-
 class Algorithm {
     constructor(data) {
         // Check if all rows has the same length, included header
@@ -58,7 +43,7 @@ class Algorithm {
 
     execute(dataset, value) {
         if (Object.keys(dataset).length <= 1) {
-            return new Node(messages.error.notDefined);
+            return new Node(CONFIG.NOT_DEFINED);
         }
 
         if (dataset[value].every(element => element == dataset[value][0])) {

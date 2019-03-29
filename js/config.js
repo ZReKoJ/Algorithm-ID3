@@ -4,6 +4,7 @@ var CONFIG = {
     DELIMITER: ",",
     DECISION: "Jugar",
     SHOW_MESSAGES_INTERVAL: 30000,
+    NOT_DEFINED: "No definido",
     TREE_CHART: {
         container: ".tree",
         levelSeparation: 100,

@@ -199,6 +199,13 @@
     background-color: var(--secondary-light-color);
 }
 
+.info-panel>.information>table select {
+    background-color: var(--secondary-light-color);
+    color: var(--on-secondary-color);
+    height: 100%;
+    width: 100%;
+}
+
 .info-panel>.information::-webkit-scrollbar {
     width: 10px;
     height: 10px;
