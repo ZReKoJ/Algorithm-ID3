@@ -82,10 +82,14 @@ $(() => {
 
     let stateButton = $(".setting-panel>.setting button.state");
     stateButton.on("click", () => {
-        let algorithm = new Algorithm(data);
-        let cleanedData = algorithm.getData();
-        let node = algorithm.execute(cleanedData, CONFIG.DECISION);
-        treatSolution(node, cleanedData);
+        try {
+            let algorithm = new Algorithm(data);
+            let cleanedData = algorithm.getData();
+            let node = algorithm.execute(cleanedData, CONFIG.DECISION);
+            treatSolution(node, cleanedData);
+        } catch (err) {
+            notifier.error(err.message)
+        }
     });
 
     infoMessages();
